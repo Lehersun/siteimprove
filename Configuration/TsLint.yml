@@ -1,0 +1,6 @@
+sniffs:
+  - class: RepeatingRValue
+    disabled: true
+    parameters:
+      allowedRightValues:
+        - "page:uid"

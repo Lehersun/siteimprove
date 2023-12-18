@@ -1,0 +1,96 @@
+{
+    "name": "pixelant/pxa-siteimprove",
+    "type": "typo3-cms-extension",
+    "description": "Official integration of the popular digital optimization intelligence platform.",
+	"license": ["GPL-2.0-or-later"],
+    "authors": [
+        {
+            "name": "Pixelant",
+            "email": "info@pixelant.net",
+            "homepage": "https://www.pixelant.net",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "typo3/cms-core": "^7.6 || ^8.7 || ^9.5 || ^10.3 || ^11.5",
+		"ext-json": "*"
+    },
+    "require-dev": {
+		"typo3/cms-composer-installers": "<1.4 || >=1.4.4",
+		"squizlabs/php_codesniffer": "^3.3",
+		"helmich/typo3-typoscript-lint": "^1.5.0 || ^2.0",
+		"friendsofphp/php-cs-fixer": "2.2.20 || ^2.16.1",
+		"nimut/testing-framework": "^2.0.3 || ^4.0 || ^5.0 || ^6.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Pixelant\\PxaSiteimprove\\": "Classes"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Pixelant\\PxaSiteimprove\\Tests\\": "Tests",
+            "TYPO3\\CMS\\Core\\Tests\\": ".Build/vendor/typo3/cms/typo3/sysext/core/Tests/",
+            "TYPO3\\CMS\\Fluid\\Tests\\": ".Build/vendor/typo3/cms/typo3/sysext/fluid/Tests/"
+        }
+    },
+    "replace": {
+        "typo3-ter/pxa-siteimprove": "self.version"
+    },
+    "config": {
+        "vendor-dir": ".Build/vendor",
+        "bin-dir": ".Build/bin",
+        "preferred-install": {
+            "typo3/cms": "source"
+        }
+    },
+    "scripts": {
+		"ci:php:lint": "find *.php Classes/ Configuration/ Tests/ -name '*.php' -print0 | xargs -0 -n 1 -P 4 php -l",
+		"ci:php:sniff": "phpcs Classes Tests",
+		"cs:php:fix": "phpcbf Classes Tests",
+		"ci:ts:lint": "typoscript-lint -c Configuration/TsLint.yml --ansi -n --fail-on-warnings -vvv Configuration/TypoScript/",
+		"ci:tests:unit": "phpunit -c .Build/vendor/nimut/testing-framework/res/Configuration/UnitTests.xml Tests/Unit",
+		"ci:tests:functional": "phpunit -c .Build/vendor/nimut/testing-framework/res/Configuration/FunctionalTests.xml Tests/Functional",
+		"ci:tests": [
+			"@ci:tests:unit",
+			"@ci:tests:functional"
+		],
+		"ci:dynamic": [
+			"@ci:tests"
+		],
+		"ci:static": [
+			"@ci:php:lint",
+			"@ci:php:sniff",
+			"@ci:ts:lint"
+		],
+		"ci": [
+			"@ci:static"
+		],
+		"link-extension": [
+			"@php -r 'is_dir($extFolder=__DIR__.\"/.Build/public/typo3conf/ext/\") || mkdir($extFolder, 0777, true);'",
+			"@php -r 'file_exists($extFolder=__DIR__.\"/.Build/public/typo3conf/ext/pxa_siteimprove\") || symlink(__DIR__,$extFolder);'"
+		],
+		"fix:php-cs": "php-cs-fixer fix",
+		"fix:php-sniff": "phpcbf Classes Tests",
+		"post-autoload-dump": [
+			"@link-extension",
+			"@prepare-extension-test-structure"
+		],
+		"prepare-extension-test-structure": [
+			"Nimut\\TestingFramework\\Composer\\ExtensionTestEnvironment::prepare"
+		],
+		"docs:generate": [
+			"docker run --rm t3docs/render-documentation show-shell-commands > tempfile.sh; echo 'dockrun_t3rd makehtml' >> tempfile.sh; bash tempfile.sh; rm tempfile.sh"
+		]
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "0.0.x-dev"
+        },
+        "typo3/cms": {
+            "cms-package-dir": "{$vendor-dir}/typo3/cms",
+            "web-dir": ".Build/public",
+			"extension-key": "pxa_siteimprove"
+        }
+    }
+}

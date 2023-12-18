@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2018-04-03T11:07:41Z" product-name="pxa_siteimprove">
+		<header/>
+		<body>
+			<trans-unit id="page.description">
+				<source>page</source>
+			</trans-unit>
+			<trans-unit id="token.description">
+				<source>token</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

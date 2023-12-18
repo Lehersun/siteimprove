@@ -1,0 +1,28 @@
+page.headerData.15535 {
+    30 = TEXT
+    30 {
+        typolink {
+            parameter.cObject = COA
+            parameter.cObject {
+                stdWrap.wrap = /typo3/index.php?redirect_url=%2Ftypo3%2F%3Ftx_siteimprove_goto%3Dpage|
+
+                10 = TEXT
+                10 {
+                    data = page:uid
+                    wrap = %3A|
+                }
+
+                20 = TEXT
+                20 {
+                    data = GP:L
+                    intval = 1
+                    wrap = %3A|
+                }
+            }
+            forceAbsoluteUrl = 1
+            returnLast = url
+        }
+
+        wrap = <meta name="editingPage" content="|" />
+    }
+}

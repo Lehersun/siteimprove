@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2018-04-03T11:07:41Z" product-name="pxa_siteimprove">
+		<header/>
+		<body>
+			<trans-unit id="settings.field.use_siteimprove">
+				<source>Enable Siteimprove</source>
+			</trans-unit>
+			<trans-unit id="settings.field.disable_siteimprove">
+				<source>Disable Siteimprove</source>
+			</trans-unit>
+			<trans-unit id="tx_pxasiteimprove_domain_model_dashboard">
+				<source>Dashboard</source>
+			</trans-unit>
+			<trans-unit id="tx_pxasiteimprove_domain_model_dashboard.page">
+				<source>Page</source>
+			</trans-unit>
+			<trans-unit id="tx_pxasiteimprove_domain_model_dashboard.token">
+				<source>Token</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

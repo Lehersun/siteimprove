@@ -1,0 +1,16 @@
+
+page.headerData.15535 = COA
+page.headerData.15535 {
+    10 = TEXT
+    10 {
+        data = page:uid
+        wrap = <meta name="pageID" content="|" />
+    }
+
+    20 = TEXT
+    20 {
+        data = GP:L
+        intval = 1
+        wrap = <meta name="languageID" content="|" />
+    }
+}

@@ -1,0 +1,5 @@
+# cat=basic/enable/10; type=boolean; label=Enable Siteimprove for all users where User TS config options.siteImprove.enable is set. Users can override this in User Settings
+enabledByDefault = 0
+
+# cat=basic/enable/10; type=boolean; label=Enable debug mode for Siteimprove integration.
+debugMode = 0
